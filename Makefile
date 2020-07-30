@@ -1,11 +1,11 @@
-.PHONY: clean
+.PHONY: clean images
 
 curriculum-vitae.pdf: curriculum-vitae.tex
 	test -d ./build || mkdir build
 	latexmk \
 		-auxdir=./build \
 		-outdir=./build \
-		-pdf \
+		-lualatex \
 		-quiet \
 		curriculum-vitae.tex
 	mv build/curriculum-vitae.pdf curriculum-vitae.pdf
@@ -16,3 +16,10 @@ clean:
 		-outdir=./build \
 		-CA \
 		curriculum-vitae.tex
+
+images:
+	for file in images/*.svg; \
+	do \
+		echo processing \'$$file\'; \
+		inkscape -D $$file --export-pdf=$${file%.*}.pdf; \
+	done

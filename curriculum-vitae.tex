@@ -1,12 +1,178 @@
-\documentclass{article}[A4]
+% Preamble
+\documentclass[12pt, a4paper]{article}
 
+% Core packages
+\usepackage[top=35mm, bottom=30mm]{geometry}
+\usepackage[TextAligned, NoDate]{currvita} % Curriculum Vitae
+\usepackage{fontspec}
+\usepackage{lmodern}
+
+% Additional packages
+\usepackage{a4}
+\usepackage[dutch]{babel} % Change hyphenation rules
+\usepackage{amsmath} % MATH, only once
+\usepackage{enumitem} % Pwetty lists
+\usepackage{graphicx} % Images (icons, to be more precise)
+\usepackage{eso-pic} % Background
+\usepackage{tikz}
+
+% Length and spacing
+% \setlength{\parindent}{4em}
+% \setlength{\parskip}{1em}
+\linespread{1.3}
+
+% Fonts
+\setmainfont{opensans}
+\newfontface\titlefont{Comfortaa-Medium}[Extension=.ttf, Path=fonts/]
+\renewcommand*{\cvlistheadingfont}{\scshape\vspace{150mm}\titlefont\Large}
+
+% Commands
+\newcommand*{\pdficon}[1]{
+    \vspace{10mm}
+    \hspace*{-25mm}
+    \includegraphics[width=10mm]{images/#1.pdf}
+    \vspace{-12mm}
+}
+
+% Metadata
 \title{Curriculum Vitae}
-\date{2020-07-30}
+\date{\today{}}
 \author{Roelof Roos}
 
+% Doc
 \begin{document}
-    \maketitle
-    \newpage
+    % Hide page numbers
+    \pagenumbering{gobble}
 
-    Hello world!
+    % Image
+    \AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{images/backdrop.pdf}}
+
+    % CV
+    \begin{cv}{}
+        \pdficon{id}
+        \begin{cvlist}{Persoonlijk}
+
+            \item[Naam] Roelof Roos
+            \item[Woonplaats] Zwolle
+            \item[Geboortedatum] 16 januari '94
+            \item[Leeftijd] 26
+
+        \end{cvlist}
+
+        \pdficon{work}
+        \begin{cvlist}{Op de werkvloer}
+
+            \item[2018 - heden] \textbf{Auto Siero}, Kraggenburg \\
+                                Functie: Full stack developer en devops
+                                \par
+                                Werkzaamheden:
+                                Bij Auto Siero heb ik geholpen om de website te onderhouden en ben ik bezig met het realiseren van
+                                de nieuwe website aan de hand van moderne standaarden en lessen van 123Lease. De website is gedaald van een reactietijd van
+                                1 - 5 seconden naar ongeveer 300ms, en de conversie meetbaarheid is, mede door uitgedachte processen, aanzienlijk verbeterd. Daarnaast
+                                is de pagina en afbeeldingsgrootte per pagina met $\sim$60\% afgenomen, wat aanzienlijk scheelt in bandbreedte.
+
+                                Gebruikte technieken: Laravel, Redis, MongoDB, Vue.JS, MySQL, Docker, Sendgrid, Statamic, Windows Server, Active Directory
+
+            \item[2019 - 2020]  \textbf{eSetup}, Zwolle \\
+                                Functie: Full stack developer en devops
+                                \par
+
+                                Werkzaamheden:
+                                Voor eSetup heb ik de dakscan ontwikkeld. Hiermee kunnen inschattingen worden gemaakt voor
+                                de capaciteit voor daken, waarmee partners dakinstallaties verkopen aan hun klanten. Het systeem
+                                berekent een vrij accurate (5\% marge) stroomopbrengst en genereert een offerte met correcte omvormer
+                                en optimizer aantallen, genereerd een PDF hiervan en stuurt deze door in het CRM in het backend.
+                                Leads die akkoord zijn gegeven worden doorgestuurd naar OutSmart en 2Solar voor verdere ontwikkeling.
+
+                                Daarnaast heb ik een front-end website ontwikkeld met reviews en lead-aggregratie.
+
+                                Gebruikte techieken: Laravel, MySQL, Redis, VueJS, Webpack, Docker, GitHub Actions, Statamic
+
+            \item[2018]         \textbf{123Lease}, Zwolle \\
+                                Functie: Laravel back-end developer
+                                \par
+
+                                Werkzaamheden:
+                                Als afstudeeropdracht het backend van 123Lease gebouwd. Dit backend is verantwoordelijk
+                                voor het snel verwerken en publiceren van duizenden voertuigen per dag. Ik heb hierbij
+                                het datamodel ontworpen voor het ontvangen van data en het verwerken van voertuigen conform
+                                dit model. Ook de flexibele filters en soorteeropties (welke toe te voegen zijn via de admin) en de manier waarop hier
+                                efficiënte queries uit komen heb ik ontwikkeld.
+
+                                Gebruikte technieken: Laravel, MySQL, PHP 7.x, Docker, DigitalOcean Cloud Storage (AWS), JSON schemas
+
+            \item[2015 - 2018]  \textbf{Schakel Marketeers}, Zwolle \\
+                                Functie: Wordpress en Symfony developer
+                                \par
+
+                                Bij internetmarketingbureau Schakel Marketeers gewerkt aan diverse
+                                WordPress sites en de fundatie gelegd voor Cadar, een systeem dat samen
+                                met WordPress autobedrijven voorziet van een moderne, supersnelle website
+                                met actuele voorraad.
+
+                                Gebruikte technieken: WordPress, Symfony, Gulp, MySQL
+
+            \item[2011 - 2014]  \textbf{Student aan Huis}, Amersfoort en Zwolle \\
+                                Functie: Support professional
+
+        \end{cvlist}
+
+        \pdficon{school}
+        \begin{cvlist}{In de schoolbanken}
+
+            \item[2013 - 2020]  \textbf{Hogeschool Windesheim}, HBO ICT \\
+                                Bachelor of Information Sciences \\
+                                Afgestudeerd in augustus 2020
+
+                                Minoren: Security Engineering, Concept and Creation (Android app development) \\
+                                Stages: InfoSupport (Nederlandse Spoorwegen), Roxit, 123Lease, Schakel Marketeers
+
+        \end{cvlist}
+
+        \pdficon{wild}
+        \begin{cvlist}{In het wild}
+
+            \item[2018 - 2020]  \textbf{Studentenvereniging Gumbo Millennium}, Zwolle \\
+                                Functie: Voorzitter Digitale Commissie
+
+                                Werkzaamheden:
+                                Onderhouden van de Google accounts, beheer van de servers, ontwikkeling en onderhoud van nieuwe
+                                site in Laravel
+
+                                Technieken: Google Admin en Google APIs, VPS beheer, Laravel, MySQL, Redis, Stripe
+
+            \item[2014 - 2015]  \textbf{Studentenvereniging Oikos Nomos}, Zwolle \\
+                                Functie: Penningmeester
+
+        \end{cvlist}
+
+        \pdficon{volley}
+        \begin{cvlist}{Hobby's en interesses}
+
+            \item Volleybal
+
+            \item Games (First-person, adventure)
+            \begin{itemize}
+                \item First-person (Far Cry, Bioshock)
+                \item Adventure (Tomb Raider)
+                \item Couch co-op
+            \end{itemize}
+
+            \item Internet en technologie
+            \begin{itemize}
+                \item Kubernetes en Serverless
+                \item AI en computer vision
+                \item Smart home en automation
+                \item Game development (Lua)
+                \item Linux customisation (\textit{Ricing})
+            \end{itemize}
+
+            \item Vrijwilligerswerk
+            \begin{itemize}
+                \item Bartender in Hedon
+                \item Opbouw en bartender bij festivals
+            \end{itemize}
+
+        \end{cvlist}
+    \end{cv}
 \end{document}
