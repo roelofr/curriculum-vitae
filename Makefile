@@ -10,6 +10,16 @@ curriculum-vitae.pdf: curriculum-vitae.tex
 		curriculum-vitae.tex
 	mv build/curriculum-vitae.pdf curriculum-vitae.pdf
 
+motivatiebrief.pdf: motivatiebrief.tex
+	test -d ./build || mkdir build
+	latexmk \
+		-auxdir=./build \
+		-outdir=./build \
+		-lualatex \
+		-quiet \
+		motivatiebrief.tex
+	mv build/motivatiebrief.pdf motivatiebrief.pdf
+
 clean:
 	latexmk \
 		-auxdir=./build \
