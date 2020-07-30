@@ -1,0 +1,38 @@
+name: Build Curriculum Vitae
+on:
+  push:
+    tags:
+
+  release:
+    types:
+      - published
+
+jobs:
+  build_latex:
+    name: Compile LaTeX document
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: curriculum-vitae.tex
+
+      - name: Publish asset
+        uses: actions/upload-artifact@v2
+        with:
+          name: curriculum-vitae.pdf
+          path: curriculum-vitae.pdf
+
+      - name: Upload Release Asset
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./curriculum-vitae.pdf
+          asset_name: "curriculum-vitae.pdf"
+          asset_content_type: application/pdf
