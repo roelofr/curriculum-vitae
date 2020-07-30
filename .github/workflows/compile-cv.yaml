@@ -19,6 +19,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: curriculum-vitae.tex
+          args: -lualatex
 
       - name: Publish asset
         uses: actions/upload-artifact@v2
