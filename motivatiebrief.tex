@@ -1,0 +1,84 @@
+% Preamble
+\documentclass[12pt, a4paper]{article}
+
+% Core packages
+\usepackage[top=35mm, bottom=30mm]{geometry}
+\usepackage{fontspec}
+\usepackage{lmodern}
+
+% Additional packages
+\usepackage{a4}
+\usepackage[dutch]{babel} % Change hyphenation rules
+\usepackage{amsmath} % MATH, only once
+\usepackage{enumitem} % Pwetty lists
+\usepackage{graphicx} % Images (icons, to be more precise)
+\usepackage{eso-pic} % Background
+\usepackage{tikz}
+
+% Length and spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\linespread{1.3}
+
+% Fonts
+% \setmainfont{opensans}
+\setmainfont{CrimsonText-Regular}[
+    Extension=.ttf,
+    Path=fonts/,
+    BoldFont = CrimsonText-Bold,
+    ItalicFont = CrimsonText-Italic,
+    BoldItalicFont = CrimsonText-BoldItalic
+]
+\newfontface\titlefont{Comfortaa-Medium}[Extension=.ttf, Path=fonts/]
+\renewcommand*{\cvlistheadingfont}{\scshape\vspace{150mm}\titlefont\Large}
+
+% Commands
+\newcommand*{\pdficon}[1]{
+    \vspace{10mm}
+    \hspace*{-25mm}
+    \includegraphics[width=10mm]{images/#1.pdf}
+    \vspace{-12mm}
+}
+
+% Metadata
+\title{Motivatiebrief}
+\date{\today{}}
+\author{Roelof Roos}
+\newcommand{\letterskip}{\hspace{\parskip}\par}
+
+% Doc
+\begin{document}
+    % Hide page numbers
+    \pagenumbering{gobble}
+
+    % Image
+    \AddToShipoutPictureBG{\includegraphics[width=\paperwidth,height=\paperheight]{images/backdrop.pdf}}
+
+    % Motivation
+    \textbf{Roelof Roos} \\
+    Address \\
+    github@roelof.io
+    \par
+
+    \textbf{Recipient} \\
+    Address
+
+    \letterskip
+
+    Place, Date
+    \par
+    \textbf{Betreft}: Subject
+
+    \letterskip
+
+    Geachte heer/mevrouw,
+
+    \par
+
+    Yadayadayada
+
+    Met vriendelijke groet,
+
+    Roelof Roos
+
+\end{document}
