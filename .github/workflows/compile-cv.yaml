@@ -18,16 +18,20 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: curriculum-vitae.tex
+          root_file: |
+            curriculum-vitae.tex
+            motivatiebrief.tex
           args: -lualatex
 
-      - name: Publish asset
+      - name: Publish assets
         uses: actions/upload-artifact@v2
         with:
-          name: curriculum-vitae.pdf
-          path: curriculum-vitae.pdf
+          name: documents
+          path: |
+            curriculum-vitae.pdf
+            motivatiebrief.pdf
 
-      - name: Upload Release Asset
+      - name: Upload Curriculum Vitae to release
         if: github.event_name == 'release'
         uses: actions/upload-release-asset@v1
         env:
@@ -36,4 +40,15 @@ jobs:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./curriculum-vitae.pdf
           asset_name: "curriculum-vitae.pdf"
+          asset_content_type: application/pdf
+
+      - name: Upload motivation letter to release
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./motivatiebrief.pdf
+          asset_name: "motivation-letter.pdf"
           asset_content_type: application/pdf

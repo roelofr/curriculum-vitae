@@ -297,6 +297,3 @@ TSWLatexianTemp*
 # Builds
 build/
 /*.pdf
-
-# Don't include letter 
-/motivatiebrief.tex
